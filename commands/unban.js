@@ -2,15 +2,16 @@ const Discord = require('discord.js');
 module.exports = {
     name : 'unban',
     execute(client, message, args){
-
-   if(!message.member.hasPermission("BAN_MEMBERS"))return message.channel.send("You dont have the permission")
-
-   let member = client.users.cache.get(args[0]);
-   if(!member)return message.channel.send("Input a valid id")
- 
-if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("I dont have permission")
-
-message.guild.members.unban(member.id);
-return message.channel.send(`**${member.tag}** Has been unbanned`)
+        if (!message.member.permissions.has("BAN_MEMBERS"))
+        return message.reply("you do not have permission to use this command...");
+    
+    const user = client.users.cache.get(args[0]);
+    if (!user) return message.reply("you must provide a valid User ID...");
+    
+    await message.guild.members.unban(user.id).then(()=>{
+ message.channel.send(`**${user.tag}** has been unbanned from the server!`);
+    }).catch(()=>{
+    message.channel.send(`Unknow Ban`)
+})
 }
 }
