@@ -23,26 +23,37 @@ client.on('message', async message => {
        client.commands.get('ping').execute(client, message, args);
        break;
        case "avatar":
-           client.commands.get('avatar').execute(client, message, args);
-           break;
-           case "embed":
-               client.commands.get('embed').execute(client, message, args);
-               break;
-               case "kick":
-               client.commands.get('kick').execute(client, message, args);
-               break;
-               case "ban":
-                client.commands.get('ban').execute(client, message, args);
-                break;
-                case "unban":
-                    client.commands.get('unban').execute(client, message, args);
-                    break;
-                    case "ticket":
-                    client.commands.get('ticket').execute(client, message, args);
-                    break;
-                    case "close":
-                        client.commands.get('close').execute(client, message, args);
-                        break;
+       client.commands.get('avatar').execute(client, message, args);
+        break;
+        case "embed":
+        client.commands.get('embed').execute(client, message, args);
+        break;
+        case "kick":
+        client.commands.get('kick').execute(client, message, args);
+        break;
+        case "ban":
+        client.commands.get('ban').execute(client, message, args);
+        break;
+        case "unban":
+        client.commands.get('unban').execute(client, message, args);
+        break;
+        case "ticket":
+        client.commands.get('ticket').execute(client, message, args);
+        break;
+        case "close":
+        client.commands.get('close').execute(client, message, args);
+        break;
+        case "snipe":
+        client.commands.get('snipe').execute(client, message, args);
+        break;
    }
+})
+client.snipes = new Map();
+client.on('messageDelete', function(message, channel){
+client.snipes.set(message.channel.id,{
+    content:message.content,
+    author:message.author.tag,
+    image:message.attachments.first() ? message.attachments.first().proxyURL : null
+})
 })
 client.login(config.token);
