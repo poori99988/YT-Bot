@@ -49,6 +49,9 @@ client.on('message', async message => {
         case "clear":
         client.commands.get('clear').execute(client, message, args);
         break;
+        case "joke":
+        client.commands.get('joke').execute(client, message, args);
+        break;
    }
 })
 client.snipes = new Map();
@@ -60,3 +63,7 @@ client.snipes.set(message.channel.id,{
 })
 })
 client.login(config.token);
+//Hello guys,Welcome back to my channel phoenix development
+//Today i will show u guys how to make a joke command
+//We will be using a package for this command called custom-discord-jokes
+//This package is made by me using a public repo as base
