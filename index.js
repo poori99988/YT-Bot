@@ -46,6 +46,9 @@ client.on('message', async message => {
         case "snipe":
         client.commands.get('snipe').execute(client, message, args);
         break;
+        case "clear":
+        client.commands.get('clear').execute(client, message, args);
+        break;
    }
 })
 client.snipes = new Map();
