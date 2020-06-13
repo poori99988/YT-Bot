@@ -9,5 +9,6 @@ module.exports = {
         .setAuthor(msg.author)
         .setDescription(msg.content)
         if(msg.image)embed.setImage(msg.image)
+        message.channel.send(embed)
     }
 }
